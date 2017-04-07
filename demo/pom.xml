@@ -34,7 +34,7 @@
 		
 		<!-- shuwang sdk -->
 		<dependency>
-			<groupId>com.shuwang.payment</groupId>
+			<groupId>info.shuwang.payment</groupId>
 			<artifactId>fjsw-receipt-sdk</artifactId>
 			<version>1.0.1</version>
 		</dependency>
