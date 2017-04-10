@@ -1,27 +1,23 @@
 package com.shuwang.receipt.model;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * Created by w景洋
  * Time 2017/3/17.
  */
 public class ReceiptJsapipayRequest {
-    private String appid;
+	@NotNull
     private Integer merchid;
+	@NotNull
     private Integer tradeType;
+	@NotNull
     private Integer amount;
     private String orderInfo;
-    private String userId;
-    private String subAppId;
-    private String subOpenId;
+    private String userId; // 支付宝用户id
+    private String subAppId; // 微信公众号appid
+    private String subOpenId; // 微信用户openid
     private String remark;
-
-    public String getAppid() {
-        return appid;
-    }
-
-    public void setAppid(String appid) {
-        this.appid = appid;
-    }
 
     public Integer getMerchid() {
         return merchid;

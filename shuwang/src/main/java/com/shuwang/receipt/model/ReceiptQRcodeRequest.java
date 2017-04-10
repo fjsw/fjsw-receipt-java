@@ -2,18 +2,17 @@ package com.shuwang.receipt.model;
 
 import javax.validation.constraints.NotNull;
 
-public class ReceiptAuthcodeRequest {
+public class ReceiptQrcodeRequest {
 	@NotNull
 	private Integer merchid;
 	private Integer shopid;
 	private Long userid;
-	private String devid;
 	@NotNull
 	private Integer amount;
 	@NotNull
-	private String authcode;
-	private String orderinfo;
-	
+	private Integer tradeType;
+	private String orderInfo;
+
 	public Integer getMerchid() {
 		return merchid;
 	}
@@ -38,14 +37,6 @@ public class ReceiptAuthcodeRequest {
 		this.userid = userid;
 	}
 
-	public String getDevid() {
-		return devid;
-	}
-
-	public void setDevid(String devid) {
-		this.devid = devid;
-	}
-
 	public Integer getAmount() {
 		return amount;
 	}
@@ -54,20 +45,19 @@ public class ReceiptAuthcodeRequest {
 		this.amount = amount;
 	}
 
-	public String getAuthcode() {
-		return authcode;
+	public Integer getTradeType() {
+		return tradeType;
 	}
 
-	public void setAuthcode(String authcode) {
-		this.authcode = authcode;
+	public void setTradeType(Integer tradeType) {
+		this.tradeType = tradeType;
 	}
 
-	public String getOrderinfo() {
-		return orderinfo;
+	public String getOrderInfo() {
+		return orderInfo;
 	}
 
-	public void setOrderinfo(String orderinfo) {
-		this.orderinfo = orderinfo;
+	public void setOrderInfo(String orderInfo) {
+		this.orderInfo = orderInfo;
 	}
-
 }

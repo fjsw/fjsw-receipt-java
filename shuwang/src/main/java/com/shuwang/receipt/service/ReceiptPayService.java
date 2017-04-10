@@ -17,25 +17,36 @@ public class ReceiptPayService {
 	private String appsecret = null;
 	private String gatewayUrl = null;
 
-	private GatewayProtocolService gatewayService;
-
-
+	/**
+	 * check whether initialized
+	 * @return boolean
+	 */
 	public boolean isInitialized() {
 		return appid != null;
 	}
 
+	/**
+	 * initial service
+	 * @param appid
+	 * @param appsecret
+	 * @param gatewayUrl
+	 */
 	public void initial(String appid, String appsecret,String gatewayUrl) {
 		this.appid = appid;
 		this.appsecret = appsecret;
 		this.gatewayUrl = gatewayUrl;
-		gatewayService = new GatewayProtocolService();
 	}
 
-	public ReceiptAuthcodeResponse authcodePay(ReceiptAuthcodeRequest request) {
+	/**
+	 * authcode payment
+	 * @param request
+	 * @return
+	 */
+	public ReceiptAuthcodeResponse scanAuthcodePay(ReceiptAuthcodeRequest request) {
 		Map<String, Object> params = ObjectDynamicCreator.getFieldVlaue(request);
 		params.put("method", "receipt.scan.authcode");
-		String result = gatewayService.callMethod(params,appid,appsecret,gatewayUrl);
-		log.debug("authcodePay() result={}", result);
+		String result = GatewayProtocolService.callMethod(params,appid,appsecret,gatewayUrl);
+		log.debug("scanAuthcodePay() result={}", result);
 		ReceiptAuthcodeResponseWrap response = gson.fromJson(result, ReceiptAuthcodeResponseWrap.class);
 		if (response.getCode() == 200) {
 			return response.getResponse();
@@ -43,10 +54,49 @@ public class ReceiptPayService {
 		return null;
 	}
 
+	/**
+	 * qrcode payment
+	 * @param request
+	 * @return
+	 */
+	public ReceiptQrcodeResponse scanQrcodePay(ReceiptQrcodeRequest request){
+		Map<String, Object> params = ObjectDynamicCreator.getFieldVlaue(request);
+		params.put("method", "receipt.scan.qrcode");
+		String result = GatewayProtocolService.callMethod(params,appid,appsecret,gatewayUrl);
+		log.debug("scanQrcodePay() result={}", result);
+		ReceiptQrcodeResponseWrap response = gson.fromJson(result, ReceiptQrcodeResponseWrap.class);
+		if (response.getCode() == 200) {
+			return response.getResponse();
+		}
+		return null;
+	}
+
+	/**
+	 * jsapi payment
+	 * @param request
+	 * @return
+	 */
+	public ReceiptJsapipayResponse scanJsapiPay(ReceiptJsapipayRequest request){
+		Map<String, Object> params = ObjectDynamicCreator.getFieldVlaue(request);
+		params.put("method", "receipt.scan.jsapi");
+		String result = GatewayProtocolService.callMethod(params,appid,appsecret,gatewayUrl);
+		log.debug("scanJsapiPay() result={}", result);
+		ReceiptJsapipayResponseWrap response = gson.fromJson(result, ReceiptJsapipayResponseWrap.class);
+		if (response.getCode() == 200) {
+			return response.getResponse();
+		}
+		return null;
+	}
+
+	/**
+	 * query payment result
+	 * @param request
+	 * @return
+	 */
 	public ReceiptQuerypayResponse queryPayResult(ReceiptQuerypayRequest request) {
 		Map<String, Object> params = ObjectDynamicCreator.getFieldVlaue(request);
 		params.put("method", "receipt.scan.payresult");
-		String result = gatewayService.callMethod(params,appid,appsecret,gatewayUrl);
+		String result = GatewayProtocolService.callMethod(params,appid,appsecret,gatewayUrl);
 		log.debug("queryPayResult() result={}", result);
 		ReceiptQuerypayResponseWrap response = gson.fromJson(result, ReceiptQuerypayResponseWrap.class);
 		if (response.getCode() == 200) {
@@ -55,10 +105,15 @@ public class ReceiptPayService {
 		return null;
 	}
 
+	/**
+	 * query merchant account
+	 * @param request
+	 * @return
+	 */
 	public ReceiptAccountQueryResponse queryAccount(ReceiptAccountQueryRequest request) {
 		Map<String, Object> params = ObjectDynamicCreator.getFieldVlaue(request);
 		params.put("method", "receipt.account.query");
-		String result = gatewayService.callMethod(params,appid,appsecret,gatewayUrl);
+		String result = GatewayProtocolService.callMethod(params,appid,appsecret,gatewayUrl);
 		log.debug("queryAccount() result={}", result);
 		ReceiptAccountQueryResponseWrap response = gson.fromJson(result, ReceiptAccountQueryResponseWrap.class);
 		if (response.getCode() == 200) {
@@ -67,10 +122,15 @@ public class ReceiptPayService {
 		return null;
 	}
 
+	/**
+	 * merchant withdraw account
+	 * @param request
+	 * @return
+	 */
 	public ReceiptWithdrawResponse withdrawAccount(ReceiptWithdrawRequest request) {
 		Map<String, Object> params = ObjectDynamicCreator.getFieldVlaue(request);
 		params.put("method", "receipt.account.withdraw");
-		String result = gatewayService.callMethod(params,appid,appsecret,gatewayUrl);
+		String result = GatewayProtocolService.callMethod(params,appid,appsecret,gatewayUrl);
 		log.debug("withdrawAccount() result={}", result);
 		ReceiptWithdrawResponseWrap response = gson.fromJson(result, ReceiptWithdrawResponseWrap.class);
 		if (response.getCode() == 200) {
@@ -79,15 +139,4 @@ public class ReceiptPayService {
 		return null;
 	}
 
-	public ReceiptJsapipayResponse scanJsapiPay(ReceiptJsapipayRequest request){
-		Map<String, Object> params = ObjectDynamicCreator.getFieldVlaue(request);
-		params.put("method", "receipt.scan.jsapi");
-		String result = gatewayService.callMethod(params,appid,appsecret,gatewayUrl);
-		log.debug("scanJsapiPay() result={}", result);
-		ReceiptJsapipayResponseWrap response = gson.fromJson(result, ReceiptJsapipayResponseWrap.class);
-		if (response.getCode() == 200) {
-			return response.getResponse();
-		}
-		return null;
-	}
 }

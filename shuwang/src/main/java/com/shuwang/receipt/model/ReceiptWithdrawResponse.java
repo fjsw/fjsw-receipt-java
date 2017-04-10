@@ -4,11 +4,9 @@ public class ReceiptWithdrawResponse {
 	private Long orderid;
 	private String result;
 	private Integer merchid;
-	private Integer withdrawalsWay;
+	private Integer withdrawWay;
 	private Integer amount;
 
-	
-	
 	public Long getOrderid() {
 		return orderid;
 	}
@@ -33,12 +31,12 @@ public class ReceiptWithdrawResponse {
 		this.merchid = merchid;
 	}
 
-	public Integer getWithdrawalsWay() {
-		return withdrawalsWay;
+	public Integer getWithdrawWay() {
+		return withdrawWay;
 	}
 
-	public void setWithdrawalsWay(Integer withdrawalsWay) {
-		this.withdrawalsWay = withdrawalsWay;
+	public void setWithdrawWay(Integer withdrawWay) {
+		this.withdrawWay = withdrawWay;
 	}
 
 	public Integer getAmount() {
@@ -48,7 +46,5 @@ public class ReceiptWithdrawResponse {
 	public void setAmount(Integer amount) {
 		this.amount = amount;
 	}
-
-	
 
 }

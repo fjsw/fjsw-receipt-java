@@ -10,10 +10,10 @@ import org.slf4j.LoggerFactory;
 import java.util.*;
 
 public class GatewayProtocolService {
-	protected final Logger log = LoggerFactory.getLogger(getClass());
-	private Gson gson = new Gson();
+	protected static final Logger log = LoggerFactory.getLogger(GatewayProtocolService.class);
+	private static Gson gson = new Gson();
 
-	public String callMethod(Map<String, Object> params,String appid,String appsecret,String gatewayUrl) {
+	public static String callMethod(Map<String, Object> params,String appid,String appsecret,String gatewayUrl) {
 		params.put("appid", appid);
 		params.put("timestamp", String.valueOf(System.currentTimeMillis()/1000));
 		// sign
@@ -23,7 +23,7 @@ public class GatewayProtocolService {
 		return _doRequest(params,gatewayUrl);
 	}
 
-	public String signRequest(Map<String, Object> params,String appsecret) {
+	public static String signRequest(Map<String, Object> params,String appsecret) {
 		// sort keys
 		List<Map.Entry<String, Object>> list = new ArrayList<Map.Entry<String, Object>>();
 		list.addAll(params.entrySet());
@@ -49,7 +49,7 @@ public class GatewayProtocolService {
 		return sign;
 	}
 	
-	public boolean checkSignEqual(Map<String, Object> data,String appsecret) {
+	public static boolean checkSignEqual(Map<String, Object> data,String appsecret) {
 		String sign = (String) data.get("sign");
 		if (sign == null || sign.isEmpty()) {
 			return false;
@@ -68,7 +68,7 @@ public class GatewayProtocolService {
 		}
 	}
 	
-	private String _doRequest(final Map<String, Object> params,String url) {
+	private static String _doRequest(final Map<String, Object> params,String url) {
 		HttpsService http = new HttpsService();
 		String jsonObject = gson.toJson(params);
 		try {

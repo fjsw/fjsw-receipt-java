@@ -1,7 +1,11 @@
 package com.shuwang.receipt.model;
 
+import javax.validation.constraints.NotNull;
+
 public class ReceiptQuerypayRequest {
+	@NotNull
 	private Integer merchid;
+	@NotNull
 	private String orderid;
 
 	public Integer getMerchid() {

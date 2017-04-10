@@ -4,7 +4,7 @@
 
   <groupId>info.shuwang.payment</groupId>
   <artifactId>fjsw-receipt-sdk</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <packaging>jar</packaging>
 
   <name>fjsw-receipt-sdk</name>
@@ -68,6 +68,12 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
       <version>1.7.16</version>
+    </dependency>
+    <!-- validation -->
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+      <version>1.1.0.Final</version>
     </dependency>
   </dependencies>
 

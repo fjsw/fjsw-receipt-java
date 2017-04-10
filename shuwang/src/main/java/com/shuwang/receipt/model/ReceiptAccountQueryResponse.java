@@ -2,7 +2,7 @@ package com.shuwang.receipt.model;
 
 public class ReceiptAccountQueryResponse {
 	private Integer totalAmount;
-	private Integer allowWithdraw;
+	private Integer totalallowWithdraw;
 
 	public Integer getTotalAmount() {
 		return totalAmount;
@@ -12,11 +12,12 @@ public class ReceiptAccountQueryResponse {
 		this.totalAmount = totalAmount;
 	}
 
-	public Integer getAllowWithdraw() {
-		return allowWithdraw;
+	public Integer getTotalallowWithdraw() {
+		return totalallowWithdraw;
 	}
 
-	public void setAllowWithdraw(Integer allowWithdraw) {
-		this.allowWithdraw = allowWithdraw;
+	public void setTotalallowWithdraw(Integer totalallowWithdraw) {
+		this.totalallowWithdraw = totalallowWithdraw;
 	}
+
 }
