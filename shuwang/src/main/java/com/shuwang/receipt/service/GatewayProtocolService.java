@@ -33,8 +33,16 @@ public class GatewayProtocolService {
 		StringBuilder query = new StringBuilder();
 		for (Iterator<Map.Entry<String, Object>> it = list.iterator(); it.hasNext();) {
 			Map.Entry<String, Object> item = it.next();
-			String value = (String) item.getValue();
-			if (value != null && !value.isEmpty()) {
+			Object value = item.getValue();
+			if (value == null) {
+				;
+			}
+			else if (value instanceof String) {
+				String string_value = (String) value;
+				if (!string_value.isEmpty()) {
+					query.append(item.getKey()).append(string_value);
+				}
+			} else {
 				query.append(item.getKey()).append(value);
 			}
 		}
