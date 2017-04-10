@@ -27,7 +27,15 @@ public class ReceiptCall {
         String method = call.getMethod();
         if (method.equals("receipt.scan.authcode")) {
             ReceiptAuthcodeRequest request = gson.fromJson(call.getBody(),ReceiptAuthcodeRequest.class);
-            ReceiptAuthcodeResponse response = receiptPayService.authcodePay(request);
+            ReceiptAuthcodeResponse response = receiptPayService.scanAuthcodePay(request);
+            result = gson.toJson(response);
+        } else if(method.equals("receipt.scan.authcode")){
+            ReceiptQrcodeRequest request = gson.fromJson(call.getBody(),ReceiptQrcodeRequest.class);
+            ReceiptQrcodeResponse response = receiptPayService.scanQrcodePay(request);
+            result = gson.toJson(response);
+        } else if(method.equals("receipt.scan.jsapi")){
+            ReceiptJsapipayRequest request = gson.fromJson(call.getBody(),ReceiptJsapipayRequest.class);
+            ReceiptJsapipayResponse response = receiptPayService.scanJsapiPay(request);
             result = gson.toJson(response);
         } else if (method.equals("receipt.scan.payresult")) {
             ReceiptQuerypayRequest request = gson.fromJson(call.getBody(),ReceiptQuerypayRequest.class);
@@ -40,10 +48,6 @@ public class ReceiptCall {
         } else if (method.equals("receipt.account.withdraw")) {
             ReceiptWithdrawRequest request = gson.fromJson(call.getBody(),ReceiptWithdrawRequest.class);
             ReceiptWithdrawResponse response = receiptPayService.withdrawAccount(request);
-            result = gson.toJson(response);
-        } else if(method.equals("receipt.scan.jsapi")){
-            ReceiptJsapipayRequest request = gson.fromJson(call.getBody(),ReceiptJsapipayRequest.class);
-            ReceiptJsapipayResponse response = receiptPayService.scanJsapiPay(request);
             result = gson.toJson(response);
         } else {
             log.warn("no method matches({})", method);
