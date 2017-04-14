@@ -16,14 +16,6 @@ public class ReceiptJsapipayResponse {
     private String channelNo;
     private String jumpurl;
 
-    public String getJumpurl() {
-        return jumpurl;
-    }
-
-    public void setJumpurl(String jumpurl) {
-        this.jumpurl = jumpurl;
-    }
-
     public Integer getAmount() {
         return amount;
     }
@@ -95,4 +87,13 @@ public class ReceiptJsapipayResponse {
     public void setChannelNo(String channelNo) {
         this.channelNo = channelNo;
     }
+
+    public String getJumpurl() {
+        return jumpurl;
+    }
+
+    public void setJumpurl(String jumpurl) {
+        this.jumpurl = jumpurl;
+    }
+
 }
