@@ -17,7 +17,7 @@ public class Application {
     	//
     	doJsapiPay(gatewayurl, appid, appsecret);
     	//
-    	onJsapiPayCallback("", appsecret);
+    	onJsapiPayCallback("{\"sign\":\"0\"}", appsecret);
 	}
 	
 	static void doJsapiPay(String gatewayurl, String appid, String appsecret) {
