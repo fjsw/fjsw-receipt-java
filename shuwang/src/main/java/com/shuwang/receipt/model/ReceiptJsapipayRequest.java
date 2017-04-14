@@ -17,7 +17,16 @@ public class ReceiptJsapipayRequest {
     private String userId; // 支付宝用户id
     private String subAppId; // 微信公众号appid
     private String subOpenId; // 微信用户openid
+    private String redirectUrl;
     private String remark;
+
+    public String getRedirectUrl() {
+        return redirectUrl;
+    }
+
+    public void setRedirectUrl(String redirectUrl) {
+        this.redirectUrl = redirectUrl;
+    }
 
     public Integer getMerchid() {
         return merchid;

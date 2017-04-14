@@ -27,9 +27,9 @@ public class ReceiptPayService {
 
 	/**
 	 * initial service
-	 * @param appid
-	 * @param appsecret
-	 * @param gatewayUrl
+	 * @param appid 应用编号
+	 * @param appsecret 应用秘钥
+	 * @param gatewayUrl 接口网关
 	 */
 	public void initial(String appid, String appsecret,String gatewayUrl) {
 		this.appid = appid;
@@ -39,8 +39,8 @@ public class ReceiptPayService {
 
 	/**
 	 * authcode payment
-	 * @param request
-	 * @return
+	 * @param request 条码支付请求
+	 * @return ReceiptAuthcodeResponse
 	 */
 	public ReceiptAuthcodeResponse scanAuthcodePay(ReceiptAuthcodeRequest request) {
 		Map<String, Object> params = ObjectDynamicCreator.getFieldVlaue(request);
@@ -56,8 +56,8 @@ public class ReceiptPayService {
 
 	/**
 	 * qrcode payment
-	 * @param request
-	 * @return
+	 * @param request 二维码支付请求
+	 * @return ReceiptQrcodeResponse
 	 */
 	public ReceiptQrcodeResponse scanQrcodePay(ReceiptQrcodeRequest request){
 		Map<String, Object> params = ObjectDynamicCreator.getFieldVlaue(request);
@@ -73,8 +73,8 @@ public class ReceiptPayService {
 
 	/**
 	 * jsapi payment
-	 * @param request
-	 * @return
+	 * @param request 公众号/服务窗支付请求
+	 * @return ReceiptJsapipayResponse
 	 */
 	public ReceiptJsapipayResponse scanJsapiPay(ReceiptJsapipayRequest request){
 		Map<String, Object> params = ObjectDynamicCreator.getFieldVlaue(request);
@@ -90,8 +90,8 @@ public class ReceiptPayService {
 
 	/**
 	 * query payment result
-	 * @param request
-	 * @return
+	 * @param request 支付结果查询请求
+	 * @return ReceiptQuerypayResponse
 	 */
 	public ReceiptQuerypayResponse queryPayResult(ReceiptQuerypayRequest request) {
 		Map<String, Object> params = ObjectDynamicCreator.getFieldVlaue(request);
@@ -107,8 +107,8 @@ public class ReceiptPayService {
 
 	/**
 	 * query merchant account
-	 * @param request
-	 * @return
+	 * @param request 账户查询请求
+	 * @return ReceiptAccountQueryResponse
 	 */
 	public ReceiptAccountQueryResponse queryAccount(ReceiptAccountQueryRequest request) {
 		Map<String, Object> params = ObjectDynamicCreator.getFieldVlaue(request);
@@ -124,8 +124,8 @@ public class ReceiptPayService {
 
 	/**
 	 * merchant withdraw account
-	 * @param request
-	 * @return
+	 * @param request 账户提现请求
+	 * @return ReceiptWithdrawResponse
 	 */
 	public ReceiptWithdrawResponse withdrawAccount(ReceiptWithdrawRequest request) {
 		Map<String, Object> params = ObjectDynamicCreator.getFieldVlaue(request);

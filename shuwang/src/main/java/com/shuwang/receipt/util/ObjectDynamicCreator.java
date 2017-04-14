@@ -6,13 +6,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ObjectDynamicCreator {
+
 	/**
 	 * 返回由对象的属性为key,值为map的value的Map集合
-	 * 
-	 * @param obj
-	 *            Object
-	 * @return mapValue Map<String,String>
-	 * @throws Exception
+	 * @param obj 源对象
+	 * @return Map
 	 */
 	public static Map<String, Object> getFieldVlaue(Object obj) {
 		Map<String, Object> mapValue = new HashMap<String, Object>();
@@ -38,12 +36,10 @@ public class ObjectDynamicCreator {
 	/**
 	 * 返回由Map的key对属性，value对应值组成的对应
 	 * 
-	 * @param map
-	 *            Map<String,String>
-	 * @param cls
-	 *            Class
+	 * @param map Map集合
+	 * @param cls 目标类
 	 * @return obj Object
-	 * @throws Exception
+	 * @throws Exception 异常
 	 */
 	public static Object setFieldValue(Map<String, String> map, Class<?> cls)
 			throws Exception {
@@ -65,13 +61,10 @@ public class ObjectDynamicCreator {
 
 	/**
 	 * 将Map里面的部分值通过反射设置到已有对象里去
-	 * 
-	 * @param obj
-	 *            Object
-	 * @param data
-	 *            Map<String,String>
-	 * @return obj Object
-	 * @throws Exception
+	 * @param obj 已有对象
+	 * @param data Map集合
+	 * @return Object
+	 * @throws Exception 异常
 	 */
 	public static Object setObjectFileValue(Object obj, Map<String, Object> data)
 			throws Exception {
@@ -95,11 +88,9 @@ public class ObjectDynamicCreator {
 	/**
 	 * 把对象的值用Map对应装起来
 	 * 
-	 * @param map
-	 *            Map<String,String>
-	 * @param obj
-	 *            Object
-	 * @return 与对象属性对应的Map Map<String,String>
+	 * @param map Map集合
+	 * @param obj Object
+	 * @return 与对象属性对应的Map
 	 */
 	public static Map<String, Object> compareMap(Map<String, Object> map,
 			Object obj) {
@@ -122,7 +113,7 @@ public class ObjectDynamicCreator {
 	 * @param newObject
 	 *            Object 临时对象
 	 * @return 持久化对象
-	 * @throws Exception
+	 * @throws Exception 异常
 	 */
 	public static Object mergedObject(Object oldObject, Object newObject)
 			throws Exception {
