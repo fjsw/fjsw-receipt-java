@@ -61,12 +61,17 @@ public class GatewayProtocolService {
 	public static boolean checkSignEqual(Map<String, Object> data,String appsecret) {
 		String sign = (String) data.get("sign");
 		if (sign == null || sign.isEmpty()) {
+			log.debug("sign is null or empty");
 			return false;
 		}
 		//
 		data.remove("sign");
-		String signRequest = signRequest(data,appsecret);
-		return sign.equals(signRequest);
+		String calcSign = signRequest(data,appsecret);
+		boolean result = sign.equals(calcSign);
+		if (!result) {
+			log.debug("sign({}) not match calcSign({})", sign, calcSign);
+		}
+		return result;
 	}
 
 	private static class KeyComparator implements
