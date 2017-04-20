@@ -15,6 +15,7 @@ public class ReceiptJsapipayResponse {
     private String wxjsapiStr;
     private String channelNo;
     private String jumpurl;
+    private String result;
 
     public Integer getAmount() {
         return amount;
@@ -95,5 +96,13 @@ public class ReceiptJsapipayResponse {
     public void setJumpurl(String jumpurl) {
         this.jumpurl = jumpurl;
     }
+
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
 
 }
