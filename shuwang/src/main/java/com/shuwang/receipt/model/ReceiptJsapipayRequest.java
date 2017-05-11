@@ -3,25 +3,25 @@ package com.shuwang.receipt.model;
 import javax.validation.constraints.NotNull;
 
 /**
- * Created by w景洋
- * Time 2017/3/17.
+ * Created by w景洋 Time 2017/3/17.
  */
 public class ReceiptJsapipayRequest {
 	@NotNull
-    private Integer merchid;
+	private Integer merchid;
 	@NotNull
-    private Integer tradeType;
+	private Integer tradeType;
 	@NotNull
-    private Integer amount;
-    private String orderInfo;
-    private String userId; // 支付宝用户id
-    private String subAppId; // 微信公众号appid
-    private String subOpenId; // 微信用户openid
+	private Integer amount;
+	private String outTradeNo;
+	private String orderInfo;
+	private String userId; // 支付宝用户id
+	private String subAppId; // 微信公众号appid
+	private String subOpenId; // 微信用户openid
     private String uid;
     private String shopid;
-    private String attach;
-    private String redirectUrl;
-    private String remark;
+	private String redirectUrl;
+	private String attach;
+	private String remark;
 
     public String getUid() {
         return uid;
@@ -39,83 +39,91 @@ public class ReceiptJsapipayRequest {
         this.shopid = shopid;
     }
 
-    public String getAttach() {
-        return attach;
-    }
-
-    public void setAttach(String attach) {
-        this.attach = attach;
-    }
-
-    public String getRedirectUrl() {
-        return redirectUrl;
-    }
-
-    public void setRedirectUrl(String redirectUrl) {
-        this.redirectUrl = redirectUrl;
-    }
-
     public Integer getMerchid() {
-        return merchid;
-    }
+		return merchid;
+	}
 
-    public void setMerchid(Integer merchid) {
-        this.merchid = merchid;
-    }
+	public void setMerchid(Integer merchid) {
+		this.merchid = merchid;
+	}
 
-    public Integer getTradeType() {
-        return tradeType;
-    }
+	public Integer getTradeType() {
+		return tradeType;
+	}
 
-    public void setTradeType(Integer tradeType) {
-        this.tradeType = tradeType;
-    }
+	public void setTradeType(Integer tradeType) {
+		this.tradeType = tradeType;
+	}
 
-    public Integer getAmount() {
-        return amount;
-    }
+	public Integer getAmount() {
+		return amount;
+	}
 
-    public void setAmount(Integer amount) {
-        this.amount = amount;
-    }
+	public void setAmount(Integer amount) {
+		this.amount = amount;
+	}
 
-    public String getOrderInfo() {
-        return orderInfo;
-    }
+	public String getOutTradeNo() {
+		return outTradeNo;
+	}
 
-    public void setOrderInfo(String orderInfo) {
-        this.orderInfo = orderInfo;
-    }
+	public void setOutTradeNo(String outTradeNo) {
+		this.outTradeNo = outTradeNo;
+	}
 
-    public String getUserId() {
-        return userId;
-    }
+	public String getOrderInfo() {
+		return orderInfo;
+	}
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
+	public void setOrderInfo(String orderInfo) {
+		this.orderInfo = orderInfo;
+	}
 
-    public String getSubAppId() {
-        return subAppId;
-    }
+	public String getUserId() {
+		return userId;
+	}
 
-    public void setSubAppId(String subAppId) {
-        this.subAppId = subAppId;
-    }
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
-    public String getSubOpenId() {
-        return subOpenId;
-    }
+	public String getSubAppId() {
+		return subAppId;
+	}
 
-    public void setSubOpenId(String subOpenId) {
-        this.subOpenId = subOpenId;
-    }
+	public void setSubAppId(String subAppId) {
+		this.subAppId = subAppId;
+	}
 
-    public String getRemark() {
-        return remark;
-    }
+	public String getSubOpenId() {
+		return subOpenId;
+	}
 
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
+	public void setSubOpenId(String subOpenId) {
+		this.subOpenId = subOpenId;
+	}
+
+	public String getRedirectUrl() {
+		return redirectUrl;
+	}
+
+	public void setRedirectUrl(String redirectUrl) {
+		this.redirectUrl = redirectUrl;
+	}
+
+	public String getAttach() {
+		return attach;
+	}
+
+	public void setAttach(String attach) {
+		this.attach = attach;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
 }

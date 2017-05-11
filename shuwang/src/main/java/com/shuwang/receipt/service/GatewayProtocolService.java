@@ -11,6 +11,7 @@ import java.util.*;
 
 public class GatewayProtocolService {
 	protected static final Logger log = LoggerFactory.getLogger(GatewayProtocolService.class);
+	private static HttpsService http = new HttpsService();
 	private static Gson gson = new Gson();
 
 	public static String callMethod(Map<String, Object> params,String appid,String appsecret,String gatewayUrl) {
@@ -60,12 +61,17 @@ public class GatewayProtocolService {
 	public static boolean checkSignEqual(Map<String, Object> data,String appsecret) {
 		String sign = (String) data.get("sign");
 		if (sign == null || sign.isEmpty()) {
+			log.debug("sign is null or empty");
 			return false;
 		}
 		//
 		data.remove("sign");
-		String signRequest = signRequest(data,appsecret);
-		return sign.equals(signRequest);
+		String calcSign = signRequest(data,appsecret);
+		boolean result = sign.equals(calcSign);
+		if (!result) {
+			log.debug("sign({}) not match calcSign({})", sign, calcSign);
+		}
+		return result;
 	}
 
 	private static class KeyComparator implements
@@ -77,7 +83,6 @@ public class GatewayProtocolService {
 	}
 	
 	private static String _doRequest(final Map<String, Object> params,String url) {
-		HttpsService http = new HttpsService();
 		String jsonObject = gson.toJson(params);
 		try {
 			String text = http.jsonPost(url,jsonObject);

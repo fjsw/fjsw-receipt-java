@@ -14,6 +14,9 @@ public class ReceiptAuthcodeResponse {
 	public boolean isPaying() {
 		return result==null ? false : result.equals("用户付款中");
 	}
+	public boolean isUnknown() {
+		return result==null ? false : result.equals("交易状态未知");
+	}
 
 	public String getResult() {
 		return result;

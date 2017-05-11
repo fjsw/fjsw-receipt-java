@@ -5,6 +5,7 @@ import java.util.Map;
 import com.google.gson.Gson;
 import com.shuwang.receipt.demo.custom.ReceiptCall;
 import com.shuwang.receipt.demo.model.CallMajor;
+import com.shuwang.receipt.demo.model.ReceiptPayCallback;
 import com.shuwang.receipt.service.GatewayProtocolService;
 import com.shuwang.receipt.util.GsonUtils;
 
@@ -17,7 +18,7 @@ public class Application {
     	//
     	doJsapiPay(gatewayurl, appid, appsecret);
     	//
-    	onJsapiPayCallback("", appsecret);
+    	onJsapiPayCallback("{\"sign\":\"0\"}", appsecret);
 	}
 	
 	static void doJsapiPay(String gatewayurl, String appid, String appsecret) {
@@ -36,6 +37,19 @@ public class Application {
 			System.out.println( "sign not equal");
 		} else {
 			System.out.println( "sign OK!");
+		}
+		//
+		String method = (String) response.get("method");
+		if (method == null || method.isEmpty()) {
+			System.out.println("appCallback() method is null");
+			return;
+		}
+		//
+		if (method.equals("receipt.notify.payresult")) {
+			ReceiptPayCallback callback = gson.fromJson(body, ReceiptPayCallback.class);
+			System.out.println("callback.getOutTradeNo()=" + callback.getOutTradeNo());
+		} else {
+			System.out.println("appCallback() method(" + method + ") is not dealed");
 		}
 	}
 }
