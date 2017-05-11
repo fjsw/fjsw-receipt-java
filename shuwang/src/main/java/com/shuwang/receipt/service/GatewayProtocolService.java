@@ -14,6 +14,14 @@ public class GatewayProtocolService {
 	private static HttpsService http = new HttpsService();
 	private static Gson gson = new Gson();
 
+	/**
+	 * 通过业务参数调用接口, 方法内部进行时间戳和签名运算
+	 * @param params 业务参数
+	 * @param appid 应用编号
+	 * @param appsecret 应用密钥
+	 * @param gatewayUrl 网关接口地址
+	 * @return
+	 */
 	public static String callMethod(Map<String, Object> params,String appid,String appsecret,String gatewayUrl) {
 		params.put("appid", appid);
 		params.put("timestamp", String.valueOf(System.currentTimeMillis()/1000));
@@ -24,6 +32,12 @@ public class GatewayProtocolService {
 		return _doRequest(params,gatewayUrl);
 	}
 
+	/**
+	 * 计算签名
+	 * @param params 业务参数
+	 * @param appsecret 应用密钥
+	 * @return
+	 */
 	public static String signRequest(Map<String, Object> params,String appsecret) {
 		// sort keys
 		List<Map.Entry<String, Object>> list = new ArrayList<Map.Entry<String, Object>>();
@@ -57,8 +71,14 @@ public class GatewayProtocolService {
 		}
 		return sign;
 	}
-	
-	public static boolean checkSignEqual(Map<String, Object> data,String appsecret) {
+
+	/**
+	 * 校验签名是否一致
+	 * @param data 原始数据
+	 * @param appsecret 应用密钥
+	 * @return boolean
+	 */
+	public static boolean checkSignEqual(Map<String, Object> data, String appsecret) {
 		String sign = (String) data.get("sign");
 		if (sign == null || sign.isEmpty()) {
 			log.debug("sign is null or empty");

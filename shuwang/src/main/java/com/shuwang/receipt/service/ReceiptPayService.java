@@ -106,6 +106,23 @@ public class ReceiptPayService {
 	}
 
 	/**
+	 * 申请退款
+	 * @param request 申请退款请求
+	 * @return ReceiptRefundResponse
+	 */
+	public ReceiptRefundResponse refundPayOrder(ReceiptRefundRequest request) {
+		Map<String, Object> params = ObjectDynamicCreator.getFieldVlaue(request);
+		params.put("method", "receipt.scan.refund");
+		String result = GatewayProtocolService.callMethod(params,appid,appsecret,gatewayUrl);
+		log.debug("refundPayOrder() result={}", result);
+		ReceiptRefundResponseWrap response = gson.fromJson(result, ReceiptRefundResponseWrap.class);
+		if (response.getCode() == 200) {
+			return response.getResponse();
+		}
+		return null;
+	}
+
+	/**
 	 * query merchant account
 	 * @param request 账户查询请求
 	 * @return ReceiptAccountQueryResponse
