@@ -5,8 +5,8 @@ import javax.validation.constraints.NotNull;
 public class ReceiptQuerypayRequest {
 	@NotNull
 	private Integer merchid;
-	@NotNull
 	private String orderid;
+	private String outTradeNo;
 
 	public Integer getMerchid() {
 		return merchid;
@@ -22,6 +22,14 @@ public class ReceiptQuerypayRequest {
 
 	public void setOrderid(String orderid) {
 		this.orderid = orderid;
+	}
+
+	public String getOutTradeNo() {
+		return outTradeNo;
+	}
+
+	public void setOutTradeNo(String outTradeNo) {
+		this.outTradeNo = outTradeNo;
 	}
 
 }
