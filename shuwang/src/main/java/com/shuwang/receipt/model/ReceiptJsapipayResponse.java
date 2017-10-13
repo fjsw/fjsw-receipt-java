@@ -16,6 +16,17 @@ public class ReceiptJsapipayResponse {
     private String channelNo;
     private String jumpurl;
     private String result;
+	
+	public boolean isSuccess() {
+		if (status == null) {
+			return false;
+		}
+		if (oriRespCode == null) {
+			return false;
+		}
+		int code = Integer.parseInt(oriRespCode);
+		return (code<400 || code>599);
+	}
 
     public Integer getAmount() {
         return amount;

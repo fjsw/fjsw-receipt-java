@@ -20,7 +20,7 @@ public class GatewayProtocolService {
 	 * @param appid 应用编号
 	 * @param appsecret 应用密钥
 	 * @param gatewayUrl 网关接口地址
-	 * @return
+	 * @return String
 	 */
 	public static String callMethod(Map<String, Object> params,String appid,String appsecret,String gatewayUrl) {
 		params.put("appid", appid);
@@ -36,7 +36,7 @@ public class GatewayProtocolService {
 	 * 计算签名
 	 * @param params 业务参数
 	 * @param appsecret 应用密钥
-	 * @return
+	 * @return String
 	 */
 	public static String signRequest(Map<String, Object> params,String appsecret) {
 		// sort keys

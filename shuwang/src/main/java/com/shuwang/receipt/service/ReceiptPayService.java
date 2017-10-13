@@ -47,9 +47,9 @@ public class ReceiptPayService {
 		params.put("method", "receipt.scan.authcode");
 		String result = GatewayProtocolService.callMethod(params,appid,appsecret,gatewayUrl);
 		log.debug("scanAuthcodePay() result={}", result);
-		ReceiptAuthcodeResponseWrap response = gson.fromJson(result, ReceiptAuthcodeResponseWrap.class);
-		if (response.getCode() == 200) {
-			return response.getResponse();
+		ReceiptAuthcodeResponseWrap wrap = gson.fromJson(result, ReceiptAuthcodeResponseWrap.class);
+		if (wrap!=null && wrap.getCode() == 200) {
+			return wrap.getResponse();
 		}
 		return null;
 	}
@@ -64,9 +64,9 @@ public class ReceiptPayService {
 		params.put("method", "receipt.scan.qrcode");
 		String result = GatewayProtocolService.callMethod(params,appid,appsecret,gatewayUrl);
 		log.debug("scanQrcodePay() result={}", result);
-		ReceiptQrcodeResponseWrap response = gson.fromJson(result, ReceiptQrcodeResponseWrap.class);
-		if (response.getCode() == 200) {
-			return response.getResponse();
+		ReceiptQrcodeResponseWrap wrap = gson.fromJson(result, ReceiptQrcodeResponseWrap.class);
+		if (wrap!=null && wrap.getCode() == 200) {
+			return wrap.getResponse();
 		}
 		return null;
 	}
@@ -81,11 +81,17 @@ public class ReceiptPayService {
 		params.put("method", "receipt.scan.jsapi");
 		String result = GatewayProtocolService.callMethod(params,appid,appsecret,gatewayUrl);
 		log.debug("scanJsapiPay() result={}", result);
-		ReceiptJsapipayResponseWrap response = gson.fromJson(result, ReceiptJsapipayResponseWrap.class);
-		if (response.getCode() == 200) {
-			return response.getResponse();
+		ReceiptJsapipayResponseWrap wrap = gson.fromJson(result, ReceiptJsapipayResponseWrap.class);
+		if (wrap!=null && wrap.getCode() == 200) {
+			return wrap.getResponse();
 		}
-		return null;
+		// 处理失败情况, 将错误信息装入返回对象
+		ReceiptErrorResponseWrap errorinfo = gson.fromJson(result, ReceiptErrorResponseWrap.class);
+		ReceiptJsapipayResponse response = new ReceiptJsapipayResponse();
+		response.setOriRespCode(errorinfo.getResponse().getCode().toString());
+		response.setOriRespMsg(errorinfo.getResponse().getReason());
+		response.setResult(errorinfo.getResponse().getReason());
+		return response;
 	}
 
 	/**
@@ -98,9 +104,9 @@ public class ReceiptPayService {
 		params.put("method", "receipt.scan.payresult");
 		String result = GatewayProtocolService.callMethod(params,appid,appsecret,gatewayUrl);
 		log.debug("queryPayResult() result={}", result);
-		ReceiptQuerypayResponseWrap response = gson.fromJson(result, ReceiptQuerypayResponseWrap.class);
-		if (response.getCode() == 200) {
-			return response.getResponse();
+		ReceiptQuerypayResponseWrap wrap = gson.fromJson(result, ReceiptQuerypayResponseWrap.class);
+		if (wrap!=null && wrap.getCode() == 200) {
+			return wrap.getResponse();
 		}
 		return null;
 	}
@@ -115,9 +121,9 @@ public class ReceiptPayService {
 		params.put("method", "receipt.scan.refund");
 		String result = GatewayProtocolService.callMethod(params,appid,appsecret,gatewayUrl);
 		log.debug("refundPayOrder() result={}", result);
-		ReceiptRefundResponseWrap response = gson.fromJson(result, ReceiptRefundResponseWrap.class);
-		if (response.getCode() == 200) {
-			return response.getResponse();
+		ReceiptRefundResponseWrap wrap = gson.fromJson(result, ReceiptRefundResponseWrap.class);
+		if (wrap!=null && wrap.getCode() == 200) {
+			return wrap.getResponse();
 		}
 		return null;
 	}
@@ -132,9 +138,9 @@ public class ReceiptPayService {
 		params.put("method", "receipt.account.query");
 		String result = GatewayProtocolService.callMethod(params,appid,appsecret,gatewayUrl);
 		log.debug("queryAccount() result={}", result);
-		ReceiptAccountQueryResponseWrap response = gson.fromJson(result, ReceiptAccountQueryResponseWrap.class);
-		if (response.getCode() == 200) {
-			return response.getResponse();
+		ReceiptAccountQueryResponseWrap wrap = gson.fromJson(result, ReceiptAccountQueryResponseWrap.class);
+		if (wrap!=null && wrap.getCode() == 200) {
+			return wrap.getResponse();
 		}
 		return null;
 	}
@@ -149,9 +155,9 @@ public class ReceiptPayService {
 		params.put("method", "receipt.account.withdraw");
 		String result = GatewayProtocolService.callMethod(params,appid,appsecret,gatewayUrl);
 		log.debug("withdrawAccount() result={}", result);
-		ReceiptWithdrawResponseWrap response = gson.fromJson(result, ReceiptWithdrawResponseWrap.class);
-		if (response.getCode() == 200) {
-			return response.getResponse();
+		ReceiptWithdrawResponseWrap wrap = gson.fromJson(result, ReceiptWithdrawResponseWrap.class);
+		if (wrap!=null && wrap.getCode() == 200) {
+			return wrap.getResponse();
 		}
 		return null;
 	}

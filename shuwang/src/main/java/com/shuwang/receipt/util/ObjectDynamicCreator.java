@@ -9,7 +9,9 @@ public class ObjectDynamicCreator {
 
 	/**
 	 * 返回由对象的属性为key,值为map的value的Map集合
-	 * @param obj 源对象
+	 * 
+	 * @param obj
+	 *            源对象
 	 * @return Map
 	 */
 	public static Map<String, Object> getFieldVlaue(Object obj) {
@@ -18,13 +20,16 @@ public class ObjectDynamicCreator {
 		Field[] fields = cls.getDeclaredFields();
 		for (Field field : fields) {
 			try {
-				String name = field.getName();
-				String strGet = "get" + name.substring(0, 1).toUpperCase()
-						+ name.substring(1, name.length());
-				Method methodGet = cls.getDeclaredMethod(strGet);
-				Object object = methodGet.invoke(obj);
-				String value = object != null ? object.toString() : "";
-				mapValue.put(name, value);
+				// String name = field.getName();
+				// String strGet = "get" + name.substring(0, 1).toUpperCase()
+				// + name.substring(1, name.length());
+				// Method methodGet = cls.getDeclaredMethod(strGet);
+				// Object object = methodGet.invoke(obj);
+				// String value = object != null ? object.toString() : "";
+				field.setAccessible(true);
+				if (field.get(obj) != null && field.get(obj) != "") {
+					mapValue.put(field.getName(), field.get(obj));
+				}
 			} catch (Exception ok) {
 				// OK, continue
 				continue;
@@ -36,10 +41,13 @@ public class ObjectDynamicCreator {
 	/**
 	 * 返回由Map的key对属性，value对应值组成的对应
 	 * 
-	 * @param map Map集合
-	 * @param cls 目标类
+	 * @param map
+	 *            Map集合
+	 * @param cls
+	 *            目标类
 	 * @return obj Object
-	 * @throws Exception 异常
+	 * @throws Exception
+	 *             异常
 	 */
 	public static Object setFieldValue(Map<String, String> map, Class<?> cls)
 			throws Exception {
@@ -61,10 +69,14 @@ public class ObjectDynamicCreator {
 
 	/**
 	 * 将Map里面的部分值通过反射设置到已有对象里去
-	 * @param obj 已有对象
-	 * @param data Map集合
+	 * 
+	 * @param obj
+	 *            已有对象
+	 * @param data
+	 *            Map集合
 	 * @return Object
-	 * @throws Exception 异常
+	 * @throws Exception
+	 *             异常
 	 */
 	public static Object setObjectFileValue(Object obj, Map<String, Object> data)
 			throws Exception {
@@ -77,7 +89,7 @@ public class ObjectDynamicCreator {
 					+ name.substring(1, name.length());
 			Method methodSet = cls.getDeclaredMethod(strSet, clsType);
 			if (data.containsKey(name)) {
-				//Object objValue = typeConversion(clsType, data.get(name));
+				// Object objValue = typeConversion(clsType, data.get(name));
 				Object objValue = data.get(name);
 				methodSet.invoke(obj, objValue);
 			}
@@ -88,8 +100,10 @@ public class ObjectDynamicCreator {
 	/**
 	 * 把对象的值用Map对应装起来
 	 * 
-	 * @param map Map集合
-	 * @param obj Object
+	 * @param map
+	 *            Map集合
+	 * @param obj
+	 *            Object
 	 * @return 与对象属性对应的Map
 	 */
 	public static Map<String, Object> compareMap(Map<String, Object> map,
@@ -113,7 +127,8 @@ public class ObjectDynamicCreator {
 	 * @param newObject
 	 *            Object 临时对象
 	 * @return 持久化对象
-	 * @throws Exception 异常
+	 * @throws Exception
+	 *             异常
 	 */
 	public static Object mergedObject(Object oldObject, Object newObject)
 			throws Exception {
