@@ -85,8 +85,12 @@ public class ReceiptPayService {
 		if (wrap!=null && wrap.getCode() == 200) {
 			return wrap.getResponse();
 		}
-		// 处理失败情况, 将错误信息装入返回对象
+		// 处理失败情况
 		ReceiptErrorResponseWrap errorinfo = gson.fromJson(result, ReceiptErrorResponseWrap.class);
+		if (errorinfo == null) {
+			return null;
+		}
+		// 处理失败情况, 将错误信息装入返回对象
 		ReceiptJsapipayResponse response = new ReceiptJsapipayResponse();
 		response.setOriRespCode(errorinfo.getResponse().getCode().toString());
 		response.setOriRespMsg(errorinfo.getResponse().getReason());
