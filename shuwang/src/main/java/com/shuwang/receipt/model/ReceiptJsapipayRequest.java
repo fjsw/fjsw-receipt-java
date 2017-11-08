@@ -8,36 +8,20 @@ import javax.validation.constraints.NotNull;
 public class ReceiptJsapipayRequest {
 	@NotNull
 	private Integer merchid;
+	private Integer shopid;
+	private Long uid;
+	private String outTradeNo;
 	@NotNull
 	private Integer tradeType;
 	@NotNull
 	private Integer amount;
-	private String outTradeNo;
 	private String orderInfo;
-	private String userId; // 支付宝用户id
-	private String subAppId; // 微信公众号appid
+	private String userId;    // 支付宝用户id
+	private String subAppId;  // 微信公众号appid
 	private String subOpenId; // 微信用户openid
-    private String uid;
-    private String shopid;
-	private String redirectUrl;
+	private String redirectUrl; // 重定向地址
 	private String attach;
 	private String remark;
-
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
-
-    public String getShopid() {
-        return shopid;
-    }
-
-    public void setShopid(String shopid) {
-        this.shopid = shopid;
-    }
 
     public Integer getMerchid() {
 		return merchid;
@@ -45,6 +29,30 @@ public class ReceiptJsapipayRequest {
 
 	public void setMerchid(Integer merchid) {
 		this.merchid = merchid;
+	}
+
+	public Integer getShopid() {
+		return shopid;
+	}
+
+	public void setShopid(Integer shopid) {
+		this.shopid = shopid;
+	}
+
+	public Long getUid() {
+		return uid;
+	}
+
+	public void setUid(Long uid) {
+		this.uid = uid;
+	}
+
+	public String getOutTradeNo() {
+		return outTradeNo;
+	}
+
+	public void setOutTradeNo(String outTradeNo) {
+		this.outTradeNo = outTradeNo;
 	}
 
 	public Integer getTradeType() {
@@ -61,14 +69,6 @@ public class ReceiptJsapipayRequest {
 
 	public void setAmount(Integer amount) {
 		this.amount = amount;
-	}
-
-	public String getOutTradeNo() {
-		return outTradeNo;
-	}
-
-	public void setOutTradeNo(String outTradeNo) {
-		this.outTradeNo = outTradeNo;
 	}
 
 	public String getOrderInfo() {

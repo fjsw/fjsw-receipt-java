@@ -9,9 +9,12 @@ public class ReceiptQrcodeRequest {
 	private Long userid;
 	@NotNull
 	private Integer amount;
+	private String outTradeNo;
 	@NotNull
 	private Integer tradeType;
 	private String orderInfo;
+	private String attach;
+	private String remark;
 
 	public Integer getMerchid() {
 		return merchid;
@@ -45,6 +48,14 @@ public class ReceiptQrcodeRequest {
 		this.amount = amount;
 	}
 
+	public String getOutTradeNo() {
+		return outTradeNo;
+	}
+
+	public void setOutTradeNo(String outTradeNo) {
+		this.outTradeNo = outTradeNo;
+	}
+
 	public Integer getTradeType() {
 		return tradeType;
 	}
@@ -59,5 +70,21 @@ public class ReceiptQrcodeRequest {
 
 	public void setOrderInfo(String orderInfo) {
 		this.orderInfo = orderInfo;
+	}
+
+	public String getAttach() {
+		return attach;
+	}
+
+	public void setAttach(String attach) {
+		this.attach = attach;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 }

@@ -1,20 +1,28 @@
 package com.shuwang.receipt.model;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * Created by w景洋
  * Time 2017/3/17.
  */
 public class ReceiptJsapipayResponse {
-    private Integer amount;
+	@NotNull
     private String orderid;
+    private String outTradeNo;
+	@NotNull
     private String merchid;
+	@NotNull
     private String merchname;
+	@NotNull
+    private Integer amount;
     private String oriRespCode;
     private String oriRespMsg;
     private String status;
     private String wxjsapiStr;
     private String channelNo;
     private String jumpurl;
+	@NotNull
     private String result;
 	
 	public boolean isSuccess() {
@@ -28,14 +36,6 @@ public class ReceiptJsapipayResponse {
 		return (code<400 || code>599);
 	}
 
-    public Integer getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Integer amount) {
-        this.amount = amount;
-    }
-
     public String getOrderid() {
         return orderid;
     }
@@ -43,6 +43,14 @@ public class ReceiptJsapipayResponse {
     public void setOrderid(String orderid) {
         this.orderid = orderid;
     }
+
+    public String getOutTradeNo() {
+		return outTradeNo;
+	}
+
+	public void setOutTradeNo(String outTradeNo) {
+		this.outTradeNo = outTradeNo;
+	}
 
     public String getMerchid() {
         return merchid;
@@ -58,6 +66,14 @@ public class ReceiptJsapipayResponse {
 
     public void setMerchname(String merchname) {
         this.merchname = merchname;
+    }
+
+	public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
 
     public String getOriRespCode() {
