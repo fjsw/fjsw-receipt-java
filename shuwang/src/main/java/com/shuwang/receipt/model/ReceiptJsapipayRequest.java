@@ -7,21 +7,21 @@ import javax.validation.constraints.NotNull;
  */
 public class ReceiptJsapipayRequest {
 	@NotNull
-	private Integer merchid;
-	private Integer shopid;
-	private Long uid;
-	private String outTradeNo;
+	private Integer merchid;   // 商户编码
+	private Integer shopid;    // 商户分店编码
+	private Long uid;          // 收银员(用户编码)
+	private String outTradeNo; // 商户订单编号
 	@NotNull
-	private Integer tradeType;
+	private Integer tradeType; // 支付类型（0=组合，1=支付宝，2=微信）
 	@NotNull
-	private Integer amount;
-	private String orderInfo;
-	private String userId;    // 支付宝用户id
-	private String subAppId;  // 微信公众号appid
-	private String subOpenId; // 微信用户openid
-	private String redirectUrl; // 重定向地址
-	private String attach;
-	private String remark;
+	private Integer amount;    // 支付金额（分）
+	private String orderInfo;  // 订单信息
+	private String userId;    // 支付宝用户id    --> tradeType 为1时，必填
+	private String subAppId;  // 微信公众号appid --> tradeType 为2时，必填
+	private String subOpenId; // 微信用户openid  --> tradeType 为2时，必填
+	private String redirectUrl;// 重定向地址
+	private String attach;     // 附加信息
+	private String remark;     // 备注
 
     public Integer getMerchid() {
 		return merchid;

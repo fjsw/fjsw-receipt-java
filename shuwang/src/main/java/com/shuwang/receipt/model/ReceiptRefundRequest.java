@@ -4,13 +4,13 @@ import javax.validation.constraints.NotNull;
 
 public class ReceiptRefundRequest {
 	@NotNull
-	private Integer merchid;
+	private Integer merchid;    // 商户编码
 	@NotNull
-	private Integer amount;
-	private Long orderid;
-	private String outTradeNo;
-	private String outRefundNo;
-	private String remark;
+	private Integer amount;     // 退款金额（不超过订单支付金额）
+	private Long orderid;       // 订单号参数  （orderid 和 outTradeNo 两者至少填写一个）
+	private String outTradeNo;  // 商户订单编号（orderid 和 outTradeNo 两者至少填写一个）
+	private String outRefundNo; // 商户退款单号
+	private String remark;      // 备注
 
 	public Integer getMerchid() {
 		return merchid;

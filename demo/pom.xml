@@ -5,7 +5,7 @@
 
 	<groupId>info.shuwang.payment</groupId>
 	<artifactId>fjsw-receipt-demo</artifactId>
-	<version>1.0.9</version>
+	<version>1.1.0</version>
 
 	<!-- 指定 java SDK 的版本 -->
 	<properties>

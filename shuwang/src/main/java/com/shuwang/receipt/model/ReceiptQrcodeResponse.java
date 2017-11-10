@@ -4,10 +4,10 @@ import javax.validation.constraints.NotNull;
 
 public class ReceiptQrcodeResponse {
 	@NotNull
-	private String orderid;
-	private String outTradeNo;
+	private String orderid;    // 订单号参数
+	private String outTradeNo; // 商户订单编号
 	@NotNull
-	private String qrcode;
+	private String qrcode;     // 收款二维码内容地址，需要前端生成二维码
 
 	public String getOrderid() {
 		return orderid;

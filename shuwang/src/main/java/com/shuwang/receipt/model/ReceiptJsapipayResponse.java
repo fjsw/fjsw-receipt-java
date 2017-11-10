@@ -8,32 +8,37 @@ import javax.validation.constraints.NotNull;
  */
 public class ReceiptJsapipayResponse {
 	@NotNull
-    private String orderid;
-    private String outTradeNo;
+    private String orderid;     // 订单编号
+    private String outTradeNo;  // 商户订单编号
 	@NotNull
-    private String merchid;
+    private String merchid;     // 商户编码
 	@NotNull
-    private String merchname;
+    private String merchname;   // 商户简称
 	@NotNull
-    private Integer amount;
+    private Integer amount;     // 支付金额（分）
     private String oriRespCode;
     private String oriRespMsg;
     private String status;
-    private String wxjsapiStr;
-    private String channelNo;
-    private String jumpurl;
+    private String wxjsapiStr;  // 微信调起JSAPI支付的参数
+    private String channelNo;   // 支付宝调起JSAPI支付的渠道号
+    private String jumpurl;     // 跳转支付地址
 	@NotNull
-    private String result;
+    private String result;      // 支付结果信息
 	
 	public boolean isSuccess() {
 		if (status == null) {
 			return false;
 		}
-		if (oriRespCode == null) {
-			return false;
+		if (wxjsapiStr != null && !wxjsapiStr.isEmpty()) {
+			return true;
 		}
-		int code = Integer.parseInt(oriRespCode);
-		return (code<400 || code>599);
+		if (channelNo != null && !channelNo.isEmpty()) {
+			return true;
+		}
+		if (jumpurl != null && !jumpurl.isEmpty()) {
+			return true;
+		}
+		return false;
 	}
 
     public String getOrderid() {

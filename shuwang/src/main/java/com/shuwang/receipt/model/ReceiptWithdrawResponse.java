@@ -1,11 +1,15 @@
 package com.shuwang.receipt.model;
 
+import javax.validation.constraints.NotNull;
+
 public class ReceiptWithdrawResponse {
-	private Long orderid;
-	private String result;
-	private Integer merchid;
-	private Integer withdrawWay;
-	private Integer amount;
+	@NotNull
+	private Long orderid;        // 订单号参数
+	@NotNull
+	private String result;       // 返回信息
+	private Integer merchid;     // 商户编码
+	private Integer withdrawWay; // 提现账户（1=支付宝，2=微信)
+	private Integer amount;      // 提现金额（分）
 
 	public Long getOrderid() {
 		return orderid;

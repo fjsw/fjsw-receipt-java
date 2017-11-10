@@ -1,11 +1,16 @@
 package com.shuwang.receipt.model;
 
+import javax.validation.constraints.NotNull;
+
 public class ReceiptRefundResponse {
-	private String outRefundNo;
-	private String orderRefundid;
-	private Integer amount;
-	private String resultMsg;
-	private String status;
+	private String outRefundNo;   // 商户退款单号
+	@NotNull
+	private String orderRefundid; // 聚收米退款单号
+	@NotNull
+	private Integer amount;       // 退款金额
+	private String resultMsg;     // 退款结果消息
+	@NotNull
+	private String status;        // 退款状态 （成功：B ;其他：C）
 
 	public String getOutRefundNo() {
 		return outRefundNo;

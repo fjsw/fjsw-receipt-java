@@ -4,17 +4,17 @@ import javax.validation.constraints.NotNull;
 
 public class ReceiptQrcodeRequest {
 	@NotNull
-	private Integer merchid;
-	private Integer shopid;
-	private Long userid;
+	private Integer merchid;   // 商户编码
+	private Integer shopid;    // 商户分店编码
+	private Long userid;       // 收银员(用户编码)
 	@NotNull
-	private Integer amount;
-	private String outTradeNo;
+	private Integer amount;    // 交易金额（分）
+	private String outTradeNo; // 商户订单编号
 	@NotNull
-	private Integer tradeType;
-	private String orderInfo;
-	private String attach;
-	private String remark;
+	private Integer tradeType; // 支付类型（1=支付宝，2=微信，3=组合）
+	private String orderInfo;  // 商品详情
+	private String attach;     // 附加信息
+	private String remark;     // 备注
 
 	public Integer getMerchid() {
 		return merchid;

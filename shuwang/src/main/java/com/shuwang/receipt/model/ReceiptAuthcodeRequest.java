@@ -4,7 +4,7 @@ import javax.validation.constraints.NotNull;
 
 public class ReceiptAuthcodeRequest {
 	@NotNull
-	private Integer merchid;   // 聚收米数网商户编码
+	private Integer merchid;   // 商户编码
 	private Integer shopid;    // 商户分店编码
 	private Long userid;       // 收银员(用户编码)
 	private String devid;      // 设备编码
