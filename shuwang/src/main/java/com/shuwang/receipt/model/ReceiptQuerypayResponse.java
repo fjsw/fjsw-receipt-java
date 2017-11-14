@@ -19,13 +19,18 @@ public class ReceiptQuerypayResponse {
 	private String resultCode; // 交易结果码（1=交易成功 2=交易中 3=交易失败）
 	@NotNull
 	private String result; // 交易结果信息
+	private String outTradeNo; // 商户订单编号
+	private String attach; // 商户订单编号
+	private String remark; // 商户订单编号
+	private Integer seqnum; // 订单支付成功序列号
 
 	public boolean isSuccess() {
-		//return result == null ? false : result.equals("付款成功");
+		// return result == null ? false : result.equals("付款成功");
 		return resultCode == null ? false : resultCode.equals("1");
 	}
+
 	public boolean isPaying() {
-		//return result == null ? false : result.equals("用户付款中");
+		// return result == null ? false : result.equals("用户付款中");
 		return resultCode == null ? false : resultCode.equals("2");
 	}
 
@@ -107,5 +112,37 @@ public class ReceiptQuerypayResponse {
 
 	public void setResult(String result) {
 		this.result = result;
+	}
+
+	public String getOutTradeNo() {
+		return outTradeNo;
+	}
+
+	public void setOutTradeNo(String outTradeNo) {
+		this.outTradeNo = outTradeNo;
+	}
+
+	public String getAttach() {
+		return attach;
+	}
+
+	public void setAttach(String attach) {
+		this.attach = attach;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	public Integer getSeqnum() {
+		return seqnum;
+	}
+
+	public void setSeqnum(Integer seqnum) {
+		this.seqnum = seqnum;
 	}
 }

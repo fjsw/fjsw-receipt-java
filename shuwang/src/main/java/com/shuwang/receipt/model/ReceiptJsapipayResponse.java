@@ -24,6 +24,7 @@ public class ReceiptJsapipayResponse {
     private String jumpurl;     // 跳转支付地址
 	@NotNull
     private String result;      // 支付结果信息
+    private String attach;      // 附加信息
 	
 	public boolean isSuccess() {
 		if (status == null) {
@@ -135,6 +136,14 @@ public class ReceiptJsapipayResponse {
 
 	public void setResult(String result) {
 		this.result = result;
+	}
+
+	public String getAttach() {
+		return attach;
+	}
+
+	public void setAttach(String attach) {
+		this.attach = attach;
 	}
 
 }

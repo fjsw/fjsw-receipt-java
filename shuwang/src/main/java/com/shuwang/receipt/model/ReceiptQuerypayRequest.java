@@ -4,9 +4,9 @@ import javax.validation.constraints.NotNull;
 
 public class ReceiptQuerypayRequest {
 	@NotNull
-	private Integer merchid;
-	private String orderid;
-	private String outTradeNo;
+	private Integer merchid;   // 商户编码
+	private String orderid;    // 订单编号
+	private String outTradeNo; // 商户订单编号
 
 	public Integer getMerchid() {
 		return merchid;

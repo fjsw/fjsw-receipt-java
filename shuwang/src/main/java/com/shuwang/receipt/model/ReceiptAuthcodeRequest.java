@@ -15,6 +15,7 @@ public class ReceiptAuthcodeRequest {
 	private String authcode;   // 支付授权码
 	private String orderinfo;  // 订单信息(商铺名称)
 	private String attach;     // 附加信息
+	private String remark;     // 备注
 	
 	public Integer getMerchid() {
 		return merchid;
@@ -86,6 +87,14 @@ public class ReceiptAuthcodeRequest {
 
 	public void setAttach(String attach) {
 		this.attach = attach;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 
 }

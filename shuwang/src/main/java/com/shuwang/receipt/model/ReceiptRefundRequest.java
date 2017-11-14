@@ -11,6 +11,7 @@ public class ReceiptRefundRequest {
 	private String outTradeNo;  // 商户订单编号（orderid 和 outTradeNo 两者至少填写一个）
 	private String outRefundNo; // 商户退款单号
 	private String remark;      // 备注
+	private String orderNote;   // 退款说明
 
 	public Integer getMerchid() {
 		return merchid;
@@ -58,5 +59,13 @@ public class ReceiptRefundRequest {
 
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+
+	public String getOrderNote() {
+		return orderNote;
+	}
+
+	public void setOrderNote(String orderNote) {
+		this.orderNote = orderNote;
 	}
 }

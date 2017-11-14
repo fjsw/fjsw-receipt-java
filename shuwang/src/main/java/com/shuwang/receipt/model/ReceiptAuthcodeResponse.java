@@ -13,6 +13,7 @@ public class ReceiptAuthcodeResponse {
 	@NotNull
 	private String orderid;    // 订单号参数
 	private String outTradeNo; // 商户订单编号
+	private Integer seqnum;    // 订单支付成功序列号
 
 	public boolean isSuccess() {
 		//return result == null ? false : result.equals("付款成功");
@@ -83,5 +84,13 @@ public class ReceiptAuthcodeResponse {
 
 	public void setOutTradeNo(String outTradeNo) {
 		this.outTradeNo = outTradeNo;
+	}
+
+	public Integer getSeqnum() {
+		return seqnum;
+	}
+
+	public void setSeqnum(Integer seqnum) {
+		this.seqnum = seqnum;
 	}
 }
